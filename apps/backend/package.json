@@ -1,0 +1,13 @@
+{
+  "name": "donation-backend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "ethers": "^6.17.0",
+    "paillier-bigint": "^3.4.3"
+  }
+}

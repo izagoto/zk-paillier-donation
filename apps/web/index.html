@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donasi terenkripsi</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <p id="banner" class="banner" hidden>Identitas terdaftar. Siap berdonasi.</p>
+      <div class="stats">
+        <div>
+          <strong id="donation-count">0</strong>
+          <span>Total donasi</span>
+        </div>
+        <div>
+          <strong id="campaign-count">0</strong>
+          <span>Campaign</span>
+        </div>
+      </div>
+      <div class="layout">
+        <section class="board">
+          <div class="board-head">
+            <span>Campaign</span>
+            <span class="live"><i></i>live</span>
+          </div>
+          <div id="campaigns"></div>
+          <h2>Riwayat Donasi</h2>
+          <div id="history"></div>
+        </section>
+        <aside class="panel" id="panel">
+          <form id="register-form" class="card">
+            <div class="form-head">
+              <button id="register-back" class="back" type="button" aria-label="Kembali">←</button>
+              <div>
+                <h2>Daftar identitas</h2>
+                <p class="lead">Secret hanya dipakai di browser untuk membuat komitmen.</p>
+              </div>
+            </div>
+            <label for="secret-register">Secret Password</label>
+            <div class="secret-field">
+              <input id="secret-register" type="password" autocomplete="off" placeholder="Secret donasi" required />
+              <button type="button" data-toggle="secret-register">tampilkan</button>
+            </div>
+            <p id="register-error" class="error" hidden></p>
+            <button id="register-button" type="submit">Daftarkan</button>
+          </form>
+
+          <div id="picker" class="card" hidden>
+            <div class="picker-head">
+              <div>
+                <h2>Pilih Campaign</h2>
+                <p class="lead">Klik untuk mulai berdonasi</p>
+              </div>
+              <button id="show-history" type="button" class="ghost">History</button>
+            </div>
+            <div id="picker-live"></div>
+            <p id="closed-label" class="section-label" hidden>Sudah tersalurkan</p>
+            <div id="picker-closed"></div>
+          </div>
+
+          <form id="donate-form" class="card" hidden>
+            <div class="form-head">
+              <button id="back" class="back" type="button" aria-label="Kembali">←</button>
+              <div>
+                <h2>Kirim Donasi</h2>
+                <p id="selected-campaign"></p>
+              </div>
+            </div>
+            <label for="amount">Jumlah Donasi</label>
+            <div class="amount-field">
+              <span>Rp</span>
+              <input id="amount" type="number" min="1" step="1" inputmode="numeric" autocomplete="off" required />
+            </div>
+            <p id="amount-note"></p>
+            <label for="secret-donate">Secret Password</label>
+            <div class="secret-field">
+              <input id="secret-donate" type="password" autocomplete="off" placeholder="Secret yang kamu daftarkan." required />
+              <button type="button" data-toggle="secret-donate">tampilkan</button>
+            </div>
+            <ol id="steps" hidden>
+              <li data-step="encrypt">Mengenkripsi donasi (Paillier)...</li>
+              <li data-step="proof">Membuat ZK proof (snarkjs)...</li>
+              <li data-step="send">Mengirim ke blockchain...</li>
+              <li data-step="wait">Menunggu konfirmasi...</li>
+            </ol>
+            <p id="error" class="error" hidden></p>
+            <button id="donate-button" type="submit">Kirim Donasi</button>
+          </form>
+
+          <div id="success" class="card success" hidden>
+            <div class="check" aria-hidden="true">✓</div>
+            <h2>Donasi Berhasil</h2>
+            <p id="success-campaign"></p>
+            <p>Donasi tercatat di blockchain dalam bentuk terenkripsi.</p>
+            <p id="success-hash" class="hash"></p>
+            <button id="again" type="button">Donasi Lagi</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

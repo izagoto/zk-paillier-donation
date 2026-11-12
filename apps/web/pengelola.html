@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengelola campaign</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="layout">
+        <section class="board">
+          <div class="board-head">
+            <span>Campaign</span>
+            <span class="live"><i></i>live</span>
+          </div>
+          <div id="campaigns"></div>
+        </section>
+        <aside class="panel">
+          <form id="manage-form" class="card">
+            <h2>Buat campaign</h2>
+            <p class="lead">Halaman ini hanya untuk pengelola. Donatur dan publik tidak melihat formulir ini.</p>
+            <label for="campaign-title">Judul</label>
+            <div class="text-field">
+              <input id="campaign-title" type="text" maxlength="80" autocomplete="off" placeholder="Nama campaign" required />
+            </div>
+            <label for="campaign-target">Target</label>
+            <div class="amount-field">
+              <span>Rp</span>
+              <input id="campaign-target" type="number" min="1" step="1" inputmode="numeric" autocomplete="off" required />
+            </div>
+            <label for="campaign-photo">Foto</label>
+            <label class="photo-field">
+              <input id="campaign-photo" type="file" accept="image/jpeg,image/png,image/webp" required />
+              <img id="photo-preview" alt="" hidden />
+              <span id="photo-label">Pilih foto JPEG, PNG, atau WebP</span>
+            </label>
+            <p id="manage-note"></p>
+            <p id="manage-error" class="error" hidden></p>
+            <p id="manage-ok" class="ok" hidden></p>
+            <button id="create-button" type="submit">Buat campaign</button>
+          </form>
+        </aside>
+      </div>
+    </div>
+    <script type="module" src="/src/manage.ts"></script>
+  </body>
+</html>
